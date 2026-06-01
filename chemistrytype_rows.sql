@@ -1,0 +1,1 @@
+INSERT INTO "public"."chemistrytype" ("code", "full_name", "nominal_voltage", "notes") VALUES ('LFP', 'Lithium Iron Phosphate', '3.200', 'High thermal stability; long cycle life'), ('LTO', 'Lithium Titanate', '2.400', 'Ultra-fast charge/discharge; extremely long life'), ('NMC', 'Nickel Manganese Cobalt', '3.700', 'High energy density; used in EVs');

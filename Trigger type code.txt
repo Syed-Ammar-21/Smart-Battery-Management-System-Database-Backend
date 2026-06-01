@@ -1,0 +1,30 @@
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_name = 'sensorreading'
+  ) THEN
+    DROP TRIGGER IF EXISTS trg_fault_detection ON SensorReading;
+  END IF;
+END;
+$$;
+
+DROP FUNCTION IF EXISTS fn_fault_detection();
+DROP FUNCTION IF EXISTS sp_recommend_charging_profile(INT);
+DROP TABLE IF EXISTS SensorReadingSummary CASCADE;
+DROP TABLE IF EXISTS FaultLog             CASCADE;
+DROP TABLE IF EXISTS BatteryHealthLog     CASCADE;
+DROP TABLE IF EXISTS ChargeCycle          CASCADE;
+DROP TABLE IF EXISTS SensorReading        CASCADE;
+DROP TABLE IF EXISTS Sensor               CASCADE;
+DROP TABLE IF EXISTS NMC_Cell             CASCADE;
+DROP TABLE IF EXISTS LFP_Cell             CASCADE;
+DROP TABLE IF EXISTS LTO_Cell             CASCADE;
+DROP TABLE IF EXISTS BatteryCell          CASCADE;
+DROP TABLE IF EXISTS ChargingProfile      CASCADE;
+DROP TABLE IF EXISTS BatteryPack          CASCADE;
+DROP TABLE IF EXISTS ApplicationType      CASCADE;
+DROP TABLE IF EXISTS ChemistryType        CASCADE;
+DROP TABLE IF EXISTS CellStatus           CASCADE;
+DROP TABLE IF EXISTS FaultTypeLookup      CASCADE;
+DROP TABLE IF EXISTS FaultSeverityLookup  CASCADE;

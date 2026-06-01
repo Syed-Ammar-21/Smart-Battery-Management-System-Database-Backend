@@ -1,0 +1,1 @@
+INSERT INTO "public"."nmc_cell" ("battery_id", "nickel_ratio", "manganese_ratio", "cobalt_ratio", "energy_density_wh_kg", "max_charge_rate_c") VALUES (1, '0.800', '0.100', '0.100', '250.00', '1.50'), (2, '0.600', '0.200', '0.200', '200.00', '1.00');

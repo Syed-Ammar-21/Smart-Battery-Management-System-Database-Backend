@@ -1,0 +1,1 @@
+INSERT INTO "public"."applicationtype" ("code", "label", "description") VALUES ('EV', 'Electric Vehicle', 'On-road electric vehicle traction packs'), ('Grid_Storage', 'Grid Storage', 'Large-scale stationary energy storage'), ('Industrial', 'Industrial Equipment', 'Forklifts, AGVs, and heavy machinery'), ('Portable', 'Portable Device', 'Consumer electronics and portable tools');

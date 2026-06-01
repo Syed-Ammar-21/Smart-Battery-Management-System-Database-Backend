@@ -1,0 +1,1 @@
+INSERT INTO "public"."lfp_cell" ("battery_id", "iron_phosphate_purity", "thermal_stability_rating", "recommended_dod") VALUES (3, '99.50', 'A', '90.00'), (4, '99.30', 'A', '90.00');

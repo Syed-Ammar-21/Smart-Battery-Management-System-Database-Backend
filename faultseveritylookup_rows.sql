@@ -1,0 +1,1 @@
+INSERT INTO "public"."faultseveritylookup" ("code", "priority", "description") VALUES ('Critical', 2, 'Deviation 5–15% — reduce load or initiate controlled shutdown'), ('Emergency', 3, 'Deviation > 15% — immediate shutdown required'), ('Warning', 1, 'Deviation ≤ 5% — monitor closely');

@@ -1,0 +1,1 @@
+INSERT INTO "public"."lto_cell" ("battery_id", "titanate_grade", "rated_cycle_life", "fast_charge_capability_c") VALUES (5, 'Grade-A', 15000, '10.00'), (6, 'Grade-A', 15000, '10.00');

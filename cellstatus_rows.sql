@@ -1,0 +1,1 @@
+INSERT INTO "public"."cellstatus" ("code", "description") VALUES ('Active', 'Cell is operational'), ('Faulty', 'Cell has an unresolved fault and requires inspection'), ('Retired', 'Cell has been decommissioned');
