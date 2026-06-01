@@ -92,11 +92,11 @@ WHERE table_schema = 'public'
 ORDER BY table_name;
 ```
 
-**Step 3 — Load seed data**
+**Step 2 — Load seed data**
 
 Run all 16 sql files in order. This inserts: 3 battery packs, 6 cells (2 NMC + 2 LFP + 2 LTO), 18 sensors, 8 charging profiles, 8 charge cycles, 17 health log entries, and 2 historical fault records.
 
-**Step 4 — Deploy trigger and stored procedure**
+**Step 3 — Deploy trigger and stored procedure**
 
 Test the trigger by inserting an over-voltage reading (e.g., 4.250V for an NMC cell with max 4.200V) — a fault row should appear automatically in `FaultLog`.
 
@@ -107,7 +107,7 @@ SELECT * FROM sp_recommend_charging_profile(5);   -- LTO, SoH ~99.4% → RECOMME
 SELECT * FROM sp_recommend_charging_profile(999); -- Non-existent → ERROR
 ```
 
-**Step 5 — Run analytics queries**
+**Step 4 — Run analytics queries**
 
 Execute each file in individually in the SQL Editor.
 
@@ -153,7 +153,3 @@ Execute each file in individually in the SQL Editor.
 **Total project cost: PKR 0** — all tools used are open-source or free tier.
 
 ---
-
-## Author
-
-**Syed Ammar Zulfiqar** 
