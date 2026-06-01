@@ -9,7 +9,6 @@
 - [Overview](#overview)
 - [Features](#features)
 - [Database Schema](#database-schema)
-- [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Analytics Queries](#analytics-queries)
 - [Performance Benchmarks](#performance-benchmarks)
@@ -72,55 +71,6 @@ The schema is designed in **Third Normal Form (3NF)** with **EER specialization*
 
 ---
 
-## Project Structure
-
-```
-smart-bms-database/
-│
-├── schema/
-│   ├── 00_reset.sql              # Drop all tables/functions (run first)
-│   ├── 01_lookup_tables.sql      # Reference/lookup tables
-│   ├── 02_core_tables.sql        # Main schema + indexes
-│
-├── data/
-│   ├── insert_application_type.sql
-│   ├── insert_chemistry_type.sql
-│   ├── insert_cell_status.sql
-│   ├── insert_fault_type_lookup.sql
-│   ├── insert_fault_severity_lookup.sql
-│   ├── insert_battery_pack.sql
-│   ├── insert_battery_cell.sql
-│   ├── insert_nmc_cell.sql
-│   ├── insert_lfp_cell.sql
-│   ├── insert_lto_cell.sql
-│   ├── insert_sensor.sql
-│   ├── insert_sensor_reading.sql
-│   ├── insert_charging_profile.sql
-│   ├── insert_charge_cycle.sql
-│   ├── insert_battery_health_log.sql
-│   ├── insert_fault_log.sql
-│
-├── programming/
-│   ├── trigger_fault_detection.sql    # fn_fault_detection() + CREATE TRIGGER
-│   ├── sp_charging_profile.sql        # sp_recommend_charging_profile()
-│
-├── analytics/
-│   ├── Q1_soh_degradation_trend.sql
-│   ├── Q2_abnormal_soh_drop.sql
-│   ├── Q3_chemistry_durability_benchmark.sql
-│   ├── Q4_fast_vs_standard_charging.sql
-│   ├── Q5_fault_frequency_by_chemistry.sql
-│   ├── Q6_end_of_life_detection.sql
-│   ├── Q7_rolling_7day_sensor_average.sql
-│
-├── erd/
-│   └── erd_diagram.png               # EER Model diagram
-│
-└── README.md
-```
-
----
-
 ## Getting Started
 
 ### Prerequisites
@@ -130,13 +80,9 @@ smart-bms-database/
 
 ### Deployment Steps
 
-**Step 1 — Reset (clean slate)**
+**Step 1 — Create schema**
 
-In your Supabase project, open the **SQL Editor** and run `schema/00_reset.sql` to drop any existing objects in the correct dependency order.
-
-**Step 2 — Create schema**
-
-Run `schema/01_lookup_tables.sql` followed by `schema/02_core_tables.sql`. You should see 18 tables listed in the Table Editor sidebar.
+Run `BMS.Code.txt` and `Trigger type code.txt`. You should see 18 tables listed in the Table Editor sidebar.
 
 Verify with:
 ```sql
@@ -148,11 +94,9 @@ ORDER BY table_name;
 
 **Step 3 — Load seed data**
 
-Run all 16 files in the `data/` folder in order. This inserts: 3 battery packs, 6 cells (2 NMC + 2 LFP + 2 LTO), 18 sensors, 8 charging profiles, 8 charge cycles, 17 health log entries, and 2 historical fault records.
+Run all 16 sql files in order. This inserts: 3 battery packs, 6 cells (2 NMC + 2 LFP + 2 LTO), 18 sensors, 8 charging profiles, 8 charge cycles, 17 health log entries, and 2 historical fault records.
 
 **Step 4 — Deploy trigger and stored procedure**
-
-Run `programming/trigger_fault_detection.sql` then `programming/sp_charging_profile.sql`.
 
 Test the trigger by inserting an over-voltage reading (e.g., 4.250V for an NMC cell with max 4.200V) — a fault row should appear automatically in `FaultLog`.
 
@@ -165,7 +109,7 @@ SELECT * FROM sp_recommend_charging_profile(999); -- Non-existent → ERROR
 
 **Step 5 — Run analytics queries**
 
-Execute each file in `analytics/` individually in the SQL Editor.
+Execute each file in individually in the SQL Editor.
 
 ---
 
@@ -212,8 +156,4 @@ Execute each file in `analytics/` individually in the SQL Editor.
 
 ## Author
 
-**Syed Ammar Zulfiqar** — Roll No. 22K-4845  
-Department of Electrical Engineering  
-FAST-NUCES, Karachi — Spring 2026  
-Course: Fundamentals of Database (CS-2011)  
-Submitted to: Dr. Ahsan Nadeem
+**Syed Ammar Zulfiqar** 
